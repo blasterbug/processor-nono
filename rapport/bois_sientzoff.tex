@@ -1,0 +1,79 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[frenchb]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{ifpdf}
+\usepackage{hyperref}
+\title{Processeu \textsc{Nono} 1et 2}
+\author{Sébastien \textsc{Vallée}, Benjamin \textsc{Sientzoff}}
+\date{\today}
+\ifpdf
+\hypersetup{
+    pdfauthor={Sébastion Vallée, Benjamin Sientzoff},
+    pdftitle={Réalisation processeur Nono-1 et Nono-2},
+}
+\fi
+\begin{document}
+	% page de garde avec sommaire
+	\maketitle
+	\newpage
+	\tableofcontents
+	\newpage % passer à la page suivante
+	
+	\section*{Introduction}
+	% présenter le cadre du projet
+	% présenter le prjet en lui-même, idées de base, inspiration
+	\paragraph{}{le paragraphe d'intro}
+	
+	\section{Implémentation}
+	
+		\subsection{Opcode des instructions}
+			
+			\paragraph{titre }{xflmxcflmfldglmdf}
+			
+			\begin{tabular}{|p{4cm}|c|c|c|c|}
+			\hline Instruction & Format & Opcode & paramètres & ? \\ 
+			\hline \texttt{add r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1000} &  &  \\ 
+			\hline \texttt{sub r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1001} &  &  \\ 
+			\hline \texttt{or r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1010} &  &  \\ 
+			\hline \texttt{and r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1011} &  &  \\ 
+			\hline \texttt{not r$_{d}$, r$_{s}$} & F$_{1}$ & \texttt{1100} &  &  \\ 
+			\hline \texttt{shl r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1101} &  &  \\ 
+			\hline \texttt{shr$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1110} &  &  \\ 
+			\hline \texttt{li r$_{d}$, $val$} & F$_{2}$ & \texttt{1111} &  &  \\ 
+			\hline \texttt{halt} & F$_{1}$ & \texttt{0000} &  &  \\ 
+			\hline \texttt{b \textit{offset}} & F$_{3}$ & \texttt{0001} &  &  \\
+			\hline \texttt{beq r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0010} &  &  \\ 
+			\hline \texttt{bne r$_{s}$, r$_{t}$,\textit{offset}} & F$_{3}$ & \texttt{0011} &  &  \\ 
+			\hline \texttt{bge r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0100} &  &  \\ 
+			\hline \texttt{ble r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0101} &  &  \\ 
+			\hline \texttt{bgt r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0110} &  &  \\ 
+			\hline \texttt{blt r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0111} &  &  \\ 
+
+			\hline 
+			\end{tabular}
+			
+			\paragraph{}{paragraphe sans titre}
+		
+		\subsection{Premier pattern}
+		% l'observeur
+			\paragraph{titre du paragraphe}{contenu}
+			\paragraph{}{paragraphe sans titre}
+		
+	\section{Utilisation Nono-1}
+	
+		\subsection{Second pattern}
+		% le décorateur
+			\paragraph{titre du paragraphe}{contenu}
+			\paragraph{}{paragraphe sans titre}
+		
+			\subsection{Troisième pattern}
+			% toto
+			\paragraph{titre du paragraphe}{contenu}
+			\paragraph{}{paragraphe sans titre}
+	
+	
+	\section*{Conclusion}
+		\paragraph{}{je conclu}
+		
+\end{document}
