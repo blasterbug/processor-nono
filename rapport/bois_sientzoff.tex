@@ -2,14 +2,16 @@
 \usepackage[utf8]{inputenc}
 \usepackage[frenchb]{babel}
 \usepackage[T1]{fontenc}
+\usepackage{graphicx}
 \usepackage{ifpdf}
 \usepackage{hyperref}
+
 \title{Processeu \textsc{Nono} 1et 2}
-\author{Sébastien \textsc{Vallée}, Benjamin \textsc{Sientzoff}}
+\author{Cédric \textsc{Bois} \and Benjamin \textsc{Sientzoff}}
 \date{\today}
 \ifpdf
 \hypersetup{
-    pdfauthor={Sébastion Vallée, Benjamin Sientzoff},
+    pdfauthor={Cédric Bois, Benjamin Sientzoff},
     pdftitle={Réalisation processeur Nono-1 et Nono-2},
 }
 \fi
@@ -17,6 +19,7 @@
 	% page de garde avec sommaire
 	\maketitle
 	\newpage
+	% sommaire
 	\tableofcontents
 	\newpage % passer à la page suivante
 	
@@ -25,7 +28,7 @@
 	% présenter le prjet en lui-même, idées de base, inspiration
 	\paragraph{}{le paragraphe d'intro}
 	
-	\section{Implémentation}
+	\section{Réalisation}
 	
 		\subsection{Opcode des instructions}
 			
@@ -53,24 +56,22 @@
 			\hline 
 			\end{tabular}
 			
-			\paragraph{}{paragraphe sans titre}
+			\paragraph{}{}
 		
-		\subsection{Premier pattern}
-		% l'observeur
-			\paragraph{titre du paragraphe}{contenu}
-			\paragraph{}{paragraphe sans titre}
+	\section{Les différents circuits}
+		\subsection{L' unité arithmétique et logique}
+			\input{UAL.tex}
+		\subsection{Le contrôleur de saut}
+			\input{control_saut.tex}
+		\subsection{Décodeur d'instructions}
+			\input{deco_instru.tex}
+		\subsection{Sélection des registres}
+			\input{selec_reg.tex}
+		\subsection{Le banc de registres}
+			\input{banc_reg.tex}
 		
 	\section{Utilisation Nono-1}
-	
-		\subsection{Second pattern}
-		% le décorateur
-			\paragraph{titre du paragraphe}{contenu}
-			\paragraph{}{paragraphe sans titre}
-		
-			\subsection{Troisième pattern}
-			% toto
-			\paragraph{titre du paragraphe}{contenu}
-			\paragraph{}{paragraphe sans titre}
+
 	
 	
 	\section*{Conclusion}
