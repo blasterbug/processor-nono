@@ -9,7 +9,13 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
   <lib desc="#Gates" name="1"/>
   <lib desc="#Plexers" name="2"/>
   <lib desc="#Arithmetic" name="3"/>
-  <lib desc="#Memory" name="4"/>
+  <lib desc="#Memory" name="4">
+    <tool name="ROM">
+      <a name="contents">addr/data: 8 8
+0
+</a>
+    </tool>
+  </lib>
   <lib desc="#I/O" name="5"/>
   <lib desc="#Base" name="6">
     <tool name="Text Tool">
@@ -74,11 +80,11 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(310,340)" to="(310,370)"/>
     <wire from="(390,280)" to="(390,340)"/>
     <wire from="(330,310)" to="(460,310)"/>
-    <comp lib="0" loc="(220,230)" name="Pin">
-      <a name="facing" val="south"/>
+    <comp lib="2" loc="(330,310)" name="Multiplexer">
       <a name="width" val="4"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="Rs"/>
+    </comp>
+    <comp lib="6" loc="(171,94)" name="Text">
+      <a name="text" val="Cédric Bois,  Sientzoff - Sélection de registres"/>
     </comp>
     <comp lib="0" loc="(460,310)" name="Pin">
       <a name="facing" val="west"/>
@@ -87,8 +93,17 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="Rd/Rt"/>
       <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="2" loc="(410,260)" name="Multiplexer">
+    <comp lib="0" loc="(290,230)" name="Pin">
+      <a name="facing" val="south"/>
       <a name="width" val="4"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Rt"/>
+    </comp>
+    <comp lib="0" loc="(220,230)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="width" val="4"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Rs"/>
     </comp>
     <comp lib="0" loc="(460,350)" name="Pin">
       <a name="facing" val="west"/>
@@ -97,7 +112,17 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="RD"/>
       <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="2" loc="(330,310)" name="Multiplexer">
+    <comp lib="0" loc="(150,230)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="width" val="4"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Rd"/>
+    </comp>
+    <comp lib="0" loc="(110,370)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="isJump"/>
+    </comp>
+    <comp lib="2" loc="(410,260)" name="Multiplexer">
       <a name="width" val="4"/>
     </comp>
     <comp lib="0" loc="(460,260)" name="Pin">
@@ -106,22 +131,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="width" val="4"/>
       <a name="label" val="Rs/Rt"/>
       <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(150,230)" name="Pin">
-      <a name="facing" val="south"/>
-      <a name="width" val="4"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="Rd"/>
-    </comp>
-    <comp lib="0" loc="(290,230)" name="Pin">
-      <a name="facing" val="south"/>
-      <a name="width" val="4"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="Rt"/>
-    </comp>
-    <comp lib="0" loc="(110,370)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="isJump"/>
     </comp>
   </circuit>
 </project>
