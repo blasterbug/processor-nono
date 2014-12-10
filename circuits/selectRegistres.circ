@@ -2,6 +2,10 @@
 <project source="2.7.1" version="1.0">
 This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
 <lib desc="#Wiring" name="0">
+    <tool name="Splitter">
+      <a name="fanout" val="4"/>
+      <a name="incoming" val="4"/>
+    </tool>
     <tool name="Pin">
       <a name="output" val="true"/>
     </tool>
@@ -63,73 +67,73 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabel" val=""/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
-    <wire from="(290,270)" to="(380,270)"/>
-    <wire from="(220,250)" to="(380,250)"/>
-    <wire from="(150,230)" to="(150,300)"/>
-    <wire from="(220,250)" to="(220,320)"/>
-    <wire from="(150,300)" to="(300,300)"/>
-    <wire from="(410,260)" to="(460,260)"/>
-    <wire from="(150,350)" to="(460,350)"/>
-    <wire from="(290,230)" to="(290,270)"/>
-    <wire from="(310,330)" to="(310,340)"/>
-    <wire from="(100,340)" to="(310,340)"/>
-    <wire from="(150,300)" to="(150,350)"/>
-    <wire from="(220,320)" to="(300,320)"/>
-    <wire from="(310,340)" to="(390,340)"/>
-    <wire from="(220,230)" to="(220,250)"/>
-    <wire from="(390,280)" to="(390,340)"/>
-    <wire from="(330,310)" to="(460,310)"/>
-    <comp lib="0" loc="(150,230)" name="Pin">
+    <wire from="(80,220)" to="(80,290)"/>
+    <wire from="(220,350)" to="(220,360)"/>
+    <wire from="(270,220)" to="(270,240)"/>
+    <wire from="(180,260)" to="(290,260)"/>
+    <wire from="(240,330)" to="(350,330)"/>
+    <wire from="(300,270)" to="(300,360)"/>
+    <wire from="(180,320)" to="(210,320)"/>
+    <wire from="(320,250)" to="(350,250)"/>
+    <wire from="(270,240)" to="(290,240)"/>
+    <wire from="(180,220)" to="(180,260)"/>
+    <wire from="(70,360)" to="(220,360)"/>
+    <wire from="(80,290)" to="(80,340)"/>
+    <wire from="(80,290)" to="(350,290)"/>
+    <wire from="(220,360)" to="(300,360)"/>
+    <wire from="(180,260)" to="(180,320)"/>
+    <wire from="(80,340)" to="(210,340)"/>
+    <comp lib="0" loc="(180,220)" name="Pin">
       <a name="facing" val="south"/>
       <a name="width" val="4"/>
       <a name="tristate" val="false"/>
-      <a name="label" val="Rd"/>
+      <a name="label" val="Rs/Rt"/>
+    </comp>
+    <comp lib="0" loc="(350,290)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="4"/>
+      <a name="label" val="rd"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="2" loc="(320,250)" name="Multiplexer">
+      <a name="width" val="4"/>
+    </comp>
+    <comp lib="0" loc="(80,220)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="width" val="4"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Rd/Rs"/>
     </comp>
     <comp lib="6" loc="(165,190)" name="Text">
       <a name="text" val="Cédric Bois,  Sientzoff - Sélection de registres"/>
     </comp>
-    <comp lib="2" loc="(330,310)" name="Multiplexer">
-      <a name="width" val="4"/>
-    </comp>
-    <comp lib="0" loc="(220,230)" name="Pin">
-      <a name="facing" val="south"/>
-      <a name="width" val="4"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="Rs"/>
-    </comp>
-    <comp lib="0" loc="(100,340)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="isJump"/>
-    </comp>
-    <comp lib="0" loc="(460,260)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="width" val="4"/>
-      <a name="label" val="Rs/Rt"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(460,350)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="width" val="4"/>
-      <a name="label" val="RD"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(460,310)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="width" val="4"/>
-      <a name="label" val="Rd/Rt"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="2" loc="(410,260)" name="Multiplexer">
-      <a name="width" val="4"/>
-    </comp>
-    <comp lib="0" loc="(290,230)" name="Pin">
+    <comp lib="0" loc="(270,220)" name="Pin">
       <a name="facing" val="south"/>
       <a name="width" val="4"/>
       <a name="tristate" val="false"/>
       <a name="label" val="Rt"/>
+    </comp>
+    <comp lib="0" loc="(350,330)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="4"/>
+      <a name="label" val="rs"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(70,360)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="isJump"/>
+    </comp>
+    <comp lib="0" loc="(350,250)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="4"/>
+      <a name="label" val="rt"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="2" loc="(240,330)" name="Multiplexer">
+      <a name="width" val="4"/>
     </comp>
   </circuit>
 </project>
