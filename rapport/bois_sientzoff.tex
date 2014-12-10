@@ -25,50 +25,89 @@
 	
 	\section*{Introduction}
 
-	\paragraph{}{
-	Dans le cadre du cours intitulé \textit{Architecture des ordinateurs}, nous devons recréer
-	un processeur Nono-1. Par la suite, ce processeur sera modifier pour devenir le processeur
-	Nono-2. Ce rapport retrace comment nous avons réalisé ces processeurs MIPS. \newline
-	Les montages électroniques sont produits avec \textit{Logisim}. La version numérique de
-	ce rapport fournie les montages électroniques présentés ici et les différents fichier 
-	permettant notamment de programmer le processeur. Ces fichiers sont typiquement les images
-	RAM qui peuvent être directement charger dans la mémoire du processeur.
-	}
-	
-	\paragraph{}{
-	Dans une première partie, nous présentons les différents sous circuits composant le processeur Nono-1.
-	Une seconde partie présente sont fonctionnement global et les modification apporté à Nono-1 pour
-	implémenter les fonctions de Nono-2.
-	}
+		\paragraph{}{
+		Dans le cadre du cours intitulé \textit{Architecture des ordinateurs}, nous devons recréer
+		un processeur Nono-1. Par la suite, ce processeur sera modifier pour devenir Nono-2. Ce 
+		rapport retrace comment nous avons réalisé ces processeurs MIPS.
+		}
+		
+		\paragraph{}{
+		Les circuits électroniques présentés sont produits avec le logiciel \textit{Logisim}. Ces
+		circuits et les différents fichiers permettant notamment de programmer le processeur sont 
+		fournis avec la version numérique de ce rapport. Les images RAM peuvent être directement 
+		chargées dans la RAM des processeurs Nono. Ces images correspondent aux programmes 
+		compilés pour ces architectures et peuvent être exécutés directement dans \textit{Logisim}.
+		}
+		
+		\paragraph{}{
+		Dans une première partie, nous présentons les différents sous-circuits composants le 
+		processeur Nono-1. Une seconde partie présente sont fonctionnement global et les 
+		modifications apportées à Nono-1 pour implémenter les fonctions de Nono-2.
+		}
 	
 	\newpage
 	\section{Réalisation de Nono-1}
 	
 		\subsection{Opcode des instructions}
 			
-			\paragraph{titre }{xflmxcflmfldglmdf}
+			\paragraph{}{
+			Nono-1 et Non-2 sont des processeurs utilisant l'assembleur MIPS. Les 
+			instructions disponibles sur Nono-1 sont présentés au tableau de la figure
+			\ref{tab_opcode}. On remarque que les instructions reconnues sont relativement
+			restreintes. Ces instructions sont de trois formats différents comme on peut
+			le voir à la figure \ref{format_inst}\footnote{Tiré du sujet du projet rédigé par M. Frédéric \textsc{Goualard}}.
+			}
 			
+			\begin{figure}
+			\centering
+			\includegraphics[scale=0.2]{formats_instructions.png}
+			\label{format_inst}
+			\caption{Formats des instructions}
+			\end{figure}
+			
+				\subparagraph{Le Format F1}{
+				Le format F1 est composé de quatre paquets de bits.
+				Le premier sur est sur quatre bits, il correspond au code de l'instruction,
+				et c'est le cas pour tous les formats d'instructions.
+				Les trois paquets suivants, sur quatre bits. Ce format est utilisé typiquement
+				pour des opérations faisant intervenir trois registres. Le premier correspond
+				à la destination du résultat et les deux suivants aux registres contenant les
+				opérantes.
+				}
+				\subparagraph{Le Format F2}{
+				Le format F2 est composé de trois paquets de bits.
+				Le premier sur est sur quatre bits, il correspond au code de l'instruction.
+				Les trois paquets suivants, sur quatre bits. Ce format est utilisé typiquement
+				pour des opérations faisant intervenir trois registres. Le premier correspond
+				à la destination du résultat et les deux suivants aux registres contenant les
+				opérantes.
+				}
+			
+			\begin{figure}
+			\centering
 			\begin{tabular}{|p{4cm}|c|c|c|c|}
-			\hline Instruction & Format & Opcode & paramètres & ? \\ 
-			\hline \texttt{add r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1000} &  &  \\ 
-			\hline \texttt{sub r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1001} &  &  \\ 
-			\hline \texttt{or r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1010} &  &  \\ 
-			\hline \texttt{and r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1011} &  &  \\ 
-			\hline \texttt{not r$_{d}$, r$_{s}$} & F$_{1}$ & \texttt{1100} &  &  \\ 
-			\hline \texttt{shl r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1101} &  &  \\ 
-			\hline \texttt{shr$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1110} &  &  \\ 
-			\hline \texttt{li r$_{d}$, $val$} & F$_{2}$ & \texttt{1111} &  &  \\ 
-			\hline \texttt{halt} & F$_{1}$ & \texttt{0000} &  &  \\ 
-			\hline \texttt{b \textit{offset}} & F$_{3}$ & \texttt{0001} &  &  \\
-			\hline \texttt{beq r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0010} &  &  \\ 
-			\hline \texttt{bne r$_{s}$, r$_{t}$,\textit{offset}} & F$_{3}$ & \texttt{0011} &  &  \\ 
-			\hline \texttt{bge r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0100} &  &  \\ 
-			\hline \texttt{ble r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0101} &  &  \\ 
-			\hline \texttt{bgt r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0110} &  &  \\ 
-			\hline \texttt{blt r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0111} &  &  \\ 
-
-			\hline 
-			\end{tabular}
+				\hline Instruction et paramètres & Format & Opcode  \\ 
+				\hline \texttt{add r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1000} \\ 
+				\hline \texttt{sub r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1001}  \\ 
+				\hline \texttt{or r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1010}  \\ 
+				\hline \texttt{and r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1011}  \\ 
+				\hline \texttt{not r$_{d}$, r$_{s}$} & F$_{1}$ & \texttt{1100} \\ 
+				\hline \texttt{shl r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1101} \\ 
+				\hline \texttt{shr$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1110} \\ 
+				\hline \texttt{li r$_{d}$, $val$} & F$_{2}$ & \texttt{1111} \\ 
+				\hline \texttt{halt} & F$_{1}$ & \texttt{0000} \\ 
+				\hline \texttt{b \textit{offset}} & F$_{3}$ & \texttt{0001} \\
+				\hline \texttt{beq r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0010} \\ 
+				\hline \texttt{bne r$_{s}$, r$_{t}$,\textit{offset}} & F$_{3}$ & \texttt{0011} \\ 
+				\hline \texttt{bge r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0100} \\ 
+				\hline \texttt{ble r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0101} \\ 
+				\hline \texttt{bgt r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0110} \\ 
+				\hline \texttt{blt r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0111} \\ 
+				\hline 
+				\end{tabular}
+			\label{tab_opcode}
+			\caption{\textit{Opcode} des différentes instruction du processeur Nono-1}
+			\end{figure}
 			
 			\paragraph{}{}
 	
