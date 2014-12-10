@@ -24,11 +24,25 @@
 	\newpage % passer à la page suivante
 	
 	\section*{Introduction}
-	% présenter le cadre du projet
-	% présenter le prjet en lui-même, idées de base, inspiration
-	\paragraph{}{le paragraphe d'intro}
+
+	\paragraph{}{
+	Dans le cadre du cours intitulé \textit{Architecture des ordinateurs}, nous devons recréer
+	un processeur Nono-1. Par la suite, ce processeur sera modifier pour devenir le processeur
+	Nono-2. Ce rapport retrace comment nous avons réalisé ces processeurs MIPS. \newline
+	Les montages électroniques sont produits avec \textit{Logisim}. La version numérique de
+	ce rapport fournie les montages électroniques présentés ici et les différents fichier 
+	permettant notamment de programmer le processeur. Ces fichiers sont typiquement les images
+	RAM qui peuvent être directement charger dans la mémoire du processeur.
+	}
 	
-	\section{Réalisation}
+	\paragraph{}{
+	Dans une première partie, nous présentons les différents sous circuits composant le processeur Nono-1.
+	Une seconde partie présente sont fonctionnement global et les modification apporté à Nono-1 pour
+	implémenter les fonctions de Nono-2.
+	}
+	
+	\newpage
+	\section{Réalisation de Nono-1}
 	
 		\subsection{Opcode des instructions}
 			
@@ -57,8 +71,6 @@
 			\end{tabular}
 			
 			\paragraph{}{}
-		
-	\section{Les différents circuits}
 	
 		\subsection{L' unité arithmétique et logique}
 			\input{UAL.tex}
@@ -74,8 +86,12 @@
 			
 		\subsection{Le banc de registres}
 			\input{banc_reg.tex}
-		
-	\section{Utilisation Nono-1}
+	
+	\newpage	
+	\section{Processeurs Nono-1 et Nono-2}
+		\subsection{Nono-1}
+		\subsection{Nono-2}
+	
 
 	
 	
