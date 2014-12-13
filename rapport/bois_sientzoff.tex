@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage{ifpdf}
 \usepackage{hyperref}
+\usepackage{slashbox}
 
 \title{Processeu \textsc{Nono} 1et 2}
 \author{Cédric \textsc{Bois} \and Benjamin \textsc{Sientzoff}}
@@ -113,7 +114,7 @@
 				\hline 
 				\end{tabular}
 			\label{tab_opcode}
-			\caption{\textit{Opcode} des différentes instruction du processeur Nono-1}
+			\caption{\textit{Opcode} des différentes instruction du processeur \textsc{Nono 1}}
 			\end{figure}
 			
 			\paragraph{}{
@@ -127,6 +128,12 @@
 			Le tableau des instructions, leur format et les opcodes correspondants est présenté
 			à la figure \ref{tab_opcode}.
 			}
+			
+			\paragraph{}{
+			Maintenant qui vous avons définit nos opcodes, il est temps de concevoir les circuits
+			électroniques composants le processeur \textsc{Nono 1}. Commençons par l'Unité 
+			Arithmétique et Logique.
+			}
 	
 		\subsection{L' unité arithmétique et logique}
 			\input{UAL.tex}
@@ -134,10 +141,10 @@
 		\subsection{Le contrôleur de saut}
 			\input{control_saut.tex}
 			
-		\subsection{Décodeur d'instructions}
+		\subsection{Le décodeur d'instructions}
 			\input{deco_instru.tex}
 			
-		\subsection{Sélection des registres}
+		\subsection{La sélection des registres}
 			\input{selec_reg.tex}
 			
 		\subsection{Le banc de registres}
