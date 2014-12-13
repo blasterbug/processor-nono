@@ -118,19 +118,19 @@
 			\end{figure}
 			
 			\paragraph{}{
-			Le choix des opcode n'a pas était fait au hasard, en effet, en regardant le nombre
-			de sauts et le nombre d'opérations faisant appellent à l'unité arithmétique et logique
-			du processeur, on s'apperçoit qu'il peuvent consistuer deux groupes. On a donc coupé
-			les opcode en trois groupes. Le premier correspond aux opcodes qui commence par un $1$,
-			ce sont les instructions qui font appelle à l'UAL. \newline
-			Le second groupe, les opcodes commencent par un $0$, correspondent aux saut. Enfin 
-			le dernier groupe est composé des autres instructions, les opcodes $0000$ et $1111$.
-			Le tableau des instructions, leur format et les opcodes correspondants est présenté
-			à la figure \ref{tab_opcode}.
+			Le choix des opcodes n'a pas était fait au hasard. En effet, en regardant le nombre
+			d'instructions pour les sauts et le nombre d'opérations faisant appellent à l'unité
+			arithmétique et logique du processeur, on s'apperçoit qu'ils peuvent être divisé 
+			en deux 	groupes. On a donc regroupés les opcodes en trois groupes. Le premier 
+			correspond aux opcodes qui commence par un $1$, ce sont les instructions qui font 
+			appel à l'UAL. Le second groupe, les opcodes commencent par un $0$, correspondent 
+			aux sauts. Enfin le dernier groupe est composé des autres instructions. Sitons
+			notamment les opcodes $0000$ et $1111$. Le tableau des instructions, leur format et
+			les opcodes correspondants est présenté à la figure \ref{tab_opcode}.
 			}
 			
 			\paragraph{}{
-			Maintenant qui vous avons définit nos opcodes, il est temps de concevoir les circuits
+			Maintenant que vous avons définit nos opcodes, il est temps de concevoir les circuits
 			électroniques composants le processeur \textsc{Nono 1}. Commençons par l'Unité 
 			Arithmétique et Logique.
 			}
@@ -161,5 +161,8 @@
 	\newpage
 	\section*{Conclusion}
 		\paragraph{}{je conclu}
+		
+	\newpage
+	\listoffigures
 		
 \end{document}
