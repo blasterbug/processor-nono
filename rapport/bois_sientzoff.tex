@@ -67,7 +67,7 @@
 			
 				\subparagraph{Le Format F1}{
 				Le format F1 est composé de quatre paquets de bits.
-				Le premier sur est sur quatre bits, il correspond au code de l'instruction,
+				Le premier est sur quatre bits, il correspond au code de l'instruction,
 				et c'est le cas pour tous les formats d'instructions.
 				Les trois paquets suivants, sur quatre bits. Ce format est utilisé typiquement
 				pour des opérations faisant intervenir trois registres. Le premier correspond
@@ -76,14 +76,18 @@
 				}
 				\subparagraph{Le Format F2}{
 				Le format F2 est composé de trois paquets de bits.
-				Le premier sur est sur quatre bits, il correspond au code de l'instruction.
-				Les trois paquets suivants, sur quatre bits. Ce format est utilisé typiquement
-				pour des opérations faisant intervenir trois registres. Le premier correspond
-				à la destination du résultat et les deux suivants aux registres contenant les
-				opérantes.
+				Le premier est sur quatre bits, il correspond au code de l'instruction.
+				Les 4 bits suivants correspondent à un nom de registre et les 8 derniers
+				à une valeur immédiate. Ce format est typiquement utilisé pour l'instruction
+				\textit{li}.
 				}
 				\subparagraph{Le Format F3}{
-				Le format F3 est composé de trois paquets de bits.
+				Le format F3 peut être divisé en quatres parties. C'est le format utilisé
+				pour les sauts. Les quatres bits correspondent à l'opcode de l'instruction.
+				Le paquet des quatres bits et le suivant constitué des quatres autres bits
+				suivant correspondent à des noms de registres. Enfin les derniers bits (au
+				nombre de quatre) correspondent à un offset. Pour les sauts, cela correspond
+				à l'adresse de l'étiquette où effectuer le saut. 
 				}
 			
 			\begin{figure}
@@ -112,7 +116,17 @@
 			\caption{\textit{Opcode} des différentes instruction du processeur Nono-1}
 			\end{figure}
 			
-			\paragraph{}{}
+			\paragraph{}{
+			Le choix des opcode n'a pas était fait au hasard, en effet, en regardant le nombre
+			de sauts et le nombre d'opérations faisant appellent à l'unité arithmétique et logique
+			du processeur, on s'apperçoit qu'il peuvent consistuer deux groupes. On a donc coupé
+			les opcode en trois groupes. Le premier correspond aux opcodes qui commence par un $1$,
+			ce sont les instructions qui font appelle à l'UAL. \newline
+			Le second groupe, les opcodes commencent par un $0$, correspondent aux saut. Enfin 
+			le dernier groupe est composé des autres instructions, les opcodes $0000$ et $1111$.
+			Le tableau des instructions, leur format et les opcodes correspondants est présenté
+			à la figure \ref{tab_opcode}.
+			}
 	
 		\subsection{L' unité arithmétique et logique}
 			\input{UAL.tex}
