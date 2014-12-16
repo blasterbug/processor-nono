@@ -5,7 +5,7 @@
 }
 	\subparagraph{Gestion des sauts}{
 		Lorsque le décodeur de sauts lis une instruction de type \textit{b},
-		il se contente d'appeler l'Unité Arithmétique et logique pour faire
+		il se contente d'appeler l'Unité Arithmétique et Logique pour faire
 		une soustraction. Il arme également la sortie \textit{isJMP}.
 	}
 
@@ -22,14 +22,9 @@
 	Le schéma électronique du décodeur d'instructions est présenté à la figure
 	\ref{decod_inst_circ}. La partie qui décode le signal \textit{ctrlUAL} 
 	correspond au tableau de \textsc{Karnaugh} de la figure 
-	\ref{decod_ctrlual_karnaugh} duquel on extrait l'équation suivante :
-	\begin{equation}
-		ctralUAL = b_{3} . \neg b_{2} + b_{3} . b_{2} \neg b_{1}  + b_{3} . b_{1} \neg b_{0}
-		\label{equation_ual}
-	\end{equation}
-	Cette équation nous permet alors de réaliser le circuit électronique 
-	décodant \textit{ctrlAUL}.
+	\ref{decod_ctrlual_karnaugh} duquel on extrait l'équation \ref{ual_eq}.
 }
+
 
 \begin{figure}
 	\begin{center}
@@ -53,3 +48,14 @@
 		Tableau de \textsc{Karnaugh} pour le décodage d'instructions.
 	}
 \end{figure}
+
+	\begin{equation}
+		ctrlUAL = b_{3} . \neg b_{2} + b_{3} . b_{2} \neg b_{1}  + b_{3} . b_{1} \neg b_{0}
+		\label{ual_eq}
+	\end{equation}
+
+\paragraph{}{
+	Cette équation nous permet alors de réaliser le circuit électronique 
+	décodant \textit{ctrlAUL}. Les variables $b_{3}$, $b_{2}$, $b_{1}$ 
+	et $b_{0}$ correspondent aux bits de l'opcode.
+}
