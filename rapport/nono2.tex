@@ -1,0 +1,23 @@
+\paragraph{}{
+	Un processeur \textsc{Nono 2} est un processeur \textsc{Nono 1}
+	implémentant des routines. La gestion des routines suppose que
+	le processeur est capable de gérer plus choses.	
+}
+
+	\subparagraph{Sauts longs}{
+	Un appel à une fonction est traduit grossièrement en assembleur par 
+	un saut dans le code du programme.
+	Les saut longs (les instructions de type \verb|j étiquette|)
+	ne sont pas les mêmes types de sauts que ceux effectué par un \verb|b|.
+	Pour cela, il faut être capable d'incrémenter le pointeur d'instruction
+	(\textit{PC}). Ce qui est déjà possible avec \textsc{Nono 1}.
+	}
+	
+	\subparagraph{Paramètres de fonctions]}{
+	Lorsqu'on appelle une fonction, en général, c'est pour effectuer un calcul. 
+	Calcul qu'on souhaite effectuer sur des paramètres spécifique. Or il faut 
+	être capable de passer ces paramètres à une fonction mais également récupérer
+	son résultat, le retour de la fonction. Lorsqu'on fait appelle à une fonction
+	\textit{simple} (prenant en paramètres des scalaires), il suffit d'initialiser
+	des registres spécifiques 
+	}

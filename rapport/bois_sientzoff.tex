@@ -20,6 +20,9 @@
 \begin{document}
 	% page de garde avec sommaire
 	\maketitle
+	\vspace{15cm}
+	\par{Université de Nantes - Licence 3 Informatique}
+	\par{\textsc{X5I0030} Architecture des Ordinateurs}
 	\newpage
 	% sommaire
 	\tableofcontents
@@ -30,7 +33,7 @@
 		\paragraph{}{
 		Dans le cadre du cours intitulé \textit{Architecture des ordinateurs}, nous devons recréer
 		un processeur Nono-1. Par la suite, ce processeur sera modifier pour devenir Nono-2. Ce 
-		rapport retrace comment nous avons réalisé ces processeurs MIPS.
+		rapport retrace comment nous avons réalisé le premier processeur.
 		}
 		
 		\paragraph{}{
@@ -42,9 +45,9 @@
 		}
 		
 		\paragraph{}{
-		Dans une première partie, nous présentons les différents sous-circuits composants le 
-		processeur Nono-1. Une seconde partie présente sont fonctionnement global et les 
-		modifications apportées à Nono-1 pour implémenter les fonctions de Nono-2.
+		Nous commençons par présenter les différents sous-circuits composants le \textsc{Nono 1}.
+		Puis nous détaillons sont utilisations. Enfin, une brève partie explique comment 
+		transformer \textsc{Nono 1} en \textsc{Nono 2}.
 		}
 	
 	\newpage
@@ -101,7 +104,7 @@
 				\hline \texttt{and r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1011}  \\ 
 				\hline \texttt{not r$_{d}$, r$_{s}$} & F$_{1}$ & \texttt{1100} \\ 
 				\hline \texttt{shl r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1101} \\ 
-				\hline \texttt{shr$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1110} \\ 
+				\hline \texttt{shr r$_{d}$, r$_{s}$, r$_{t}$} & F$_{1}$ & \texttt{1110} \\ 
 				\hline \texttt{li r$_{d}$, $val$} & F$_{2}$ & \texttt{1111} \\ 
 				\hline \texttt{halt} & F$_{1}$ & \texttt{0000} \\ 
 				\hline \texttt{b \textit{offset}} & F$_{3}$ & \texttt{0001} \\
@@ -155,14 +158,25 @@
 	\newpage	
 	%\section{Processeurs Nono-1 et Nono-2}
 		\section{Nono-1}
+			\input{nono1.tex}
 		\section{Nono-2}
+			\input{nono2.tex}
 	
 
 	
 	
 	\newpage
 	\section*{Conclusion}
-		\paragraph{}{je conclu}
+		\paragraph{}{
+		La réalisation d'un processeur n'est pas trivial. Un processeur est un 
+		composant relativement complexe. Mais la division de ce dernier par unités
+		spécialisées permet de simplifier sa conception. \newline
+		}
+		
+		\paragraph{}{
+		En réalisant nous même un processeur, on a put prendre conscience à 
+		quel point un langage d'assemblage est lié à une architecture physique.
+		}
 		
 	\newpage
 	\listoffigures
