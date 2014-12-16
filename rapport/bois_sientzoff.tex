@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage{ifpdf}
 \usepackage{hyperref}
+\usepackage{amsmath}
 \usepackage{slashbox}
 
 \title{Processeu \textsc{Nono} 1et 2}
@@ -62,8 +63,7 @@
 			\begin{figure}[!ht]
 			\centering
 			\includegraphics[scale=0.2]{formats_instructions.png}
-			\label{format_inst}
-			\caption{Formats des instructions}
+			\caption{\label{format_inst} Formats des instructions}
 			\end{figure}
 			
 				\subparagraph{Le Format F1}{
@@ -83,9 +83,9 @@
 				\textit{li}.
 				}
 				\subparagraph{Le Format F3}{
-				Le format F3 peut être divisé en quatres parties. C'est le format utilisé
-				pour les sauts. Les quatres bits correspondent à l'opcode de l'instruction.
-				Le paquet des quatres bits et le suivant constitué des quatres autres bits
+				Le format F3 peut être divisé en quatre parties. C'est le format utilisé
+				pour les sauts. Les quatre bits correspondent à l'opcode de l'instruction.
+				Le paquet des quatre bits et le suivant constitué des quatre autres bits
 				suivant correspondent à des noms de registres. Enfin les derniers bits (au
 				nombre de quatre) correspondent à un offset. Pour les sauts, cela correspond
 				à l'adresse de l'étiquette où effectuer le saut. 
@@ -113,18 +113,20 @@
 				\hline \texttt{blt r$_{s}$, r$_{t}$, \textit{offset}} & F$_{3}$ & \texttt{0111} \\ 
 				\hline 
 				\end{tabular}
-			\label{tab_opcode}
-			\caption{\textit{Opcode} des différentes instruction du processeur \textsc{Nono 1}}
+			\caption{
+				\label{tab_opcode}
+				\textit{Opcode} des différentes instruction du processeur \textsc{Nono 1}
+			}
 			\end{figure}
 			
 			\paragraph{}{
 			Le choix des opcodes n'a pas était fait au hasard. En effet, en regardant le nombre
 			d'instructions pour les sauts et le nombre d'opérations faisant appellent à l'unité
-			arithmétique et logique du processeur, on s'apperçoit qu'ils peuvent être divisé 
+			arithmétique et logique du processeur, on s’aperçoit qu'ils peuvent être divisé 
 			en deux 	groupes. On a donc regroupés les opcodes en trois groupes. Le premier 
 			correspond aux opcodes qui commence par un $1$, ce sont les instructions qui font 
 			appel à l'UAL. Le second groupe, les opcodes commencent par un $0$, correspondent 
-			aux sauts. Enfin le dernier groupe est composé des autres instructions. Sitons
+			aux sauts. Enfin le dernier groupe est composé des autres instructions. Citons
 			notamment les opcodes $0000$ et $1111$. Le tableau des instructions, leur format et
 			les opcodes correspondants est présenté à la figure \ref{tab_opcode}.
 			}
