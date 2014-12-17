@@ -21,26 +21,26 @@
 	paramètres des scalaires), il suffit d'initialiser
 	des registres spécifiques pour que la fonction puisse récupérer les valeurs
 	données. Puis la fonction modifie certains registres lorsqu'elle renvoie un résultat.
-	Or, \textsc{Nono 1} ne permet pas celà car il n'a pas de registres dédiés. \newline
+	Or, \textsc{Nono 1} ne permet pas cela car il n'a pas de registres dédiés. \newline
 	D'autre part, lorsque la fonction prend en paramètre des types plus complexes
 	(un tableau par exemple) ou qu'elle appelle elle-même une fonction, il faut
 	alors gérer les cadres de pile des fonctions. Ce qui n'est pas possible actuellement.
 	}
 	
 \paragraph{}{
-	Tous ces éléments suggèrenent également l'utilisation d'instructions que le processeur
+	Tous ces éléments suggèrent également l'utilisation d'instructions que le processeur
 	ne possède pas. Par exemple, les instructions de saut, les chargements en mémoire 
-	(gestion de la pile), etc. Pour celà, il faudrait, par exemple, étendre le jeu
-	d'instructions actuel. Ce-là entraînerai alors une modification importante du 
+	(gestion de la pile), etc. Pour cela, il faudrait, par exemple, étendre le jeu
+	d'instructions actuel. Cela entraînerai alors une modification importante du 
 	processeur, notamment car la taille des opcodes ne serait plus la même. \newline
 	Une seconde solution envisageable et réalisable, serait de sacrifier
 	des instructions du jeu actuel au profil de nouvelles. Par exemple, une comparaison
 	de type \textit{inférieur ou égale} revient à faire une comparaison du type
-	\textit{supérieur}. On peut alors remplacer l'instructionde 
+	\textit{supérieur}. On peut alors remplacer l’instruction de 
 	cette comparaison par une autre.
 }
 
 \paragraph{}{
-	Malheuresement, par manque de temps, la réalisation du processeur \textsc{Nono 2}
+	Malheureusement, par manque de temps, la réalisation du processeur \textsc{Nono 2}
 	reste à ce jour inachevée.
 }

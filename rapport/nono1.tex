@@ -1,0 +1,216 @@
+\paragraph{PGCD}{
+	On commence par utiliser le processeur en implémentant la fonction qui
+	calcule le plus grand diviseur commun de deux nombres.
+	Pour ce faire, nous traduisons d'abord le code C écrit dans le sujet
+	(figure \ref{pgcd_c}), puis, on traduit le code MIPS (figure 
+	\ref{pgcd_asm}) en hexadécimale (figure \ref{pgcd_hexa}), en se 
+	basant sur les opcodes définis plus tôt et le format des instructions.
+}
+
+\begin{figure}
+	\lstset{
+		frame=single,
+		numbers=left,
+		numbersep=5pt,
+		language=C++
+	}
+	\begin{lstlisting}
+int i = 27;
+int j = 24;
+while (i != j)
+{
+	if (i > j)
+	{
+		i -= j;
+	}
+ 	else
+ 	{
+		j -= i;
+	}
+}
+	\end{lstlisting}
+	\caption{
+		\label{pgcd_c}
+		Code C du programme \textit{pgcd} tiré du sujet
+	}
+\end{figure}
+
+\begin{figure}
+	\lstset{
+		frame=single,
+		numbers=left,
+		numbersep=5pt,
+		language=[mips]Assembler,
+		morekeywords={halt,shr}
+	}
+	\begin{lstlisting}
+	.data
+	.text
+	.globl __start
+	
+__start:
+	li $t1, 27	#i
+	li $t0, 24	#j
+	
+while :
+	beq $t1, $t0, end_while
+if:
+	ble $t1, $t0, else
+then:
+	sub $t1, $t1, $t0
+	b end_if
+else:
+	sub $t0, $t0, $t1
+end_if:
+	b while
+end_while:
+
+# fin du programme
+halt
+
+	\end{lstlisting}
+	\caption{
+		\label{pgcd_asm}
+		Code MIPS du programme \textit{pgcd}
+	}
+\end{figure}
+
+\begin{figure}
+	\lstset{
+		frame=single,
+		numbers=left,
+		numbersep=5pt,
+		language=[mips]Assembler
+	}
+	\begin{lstlisting}
+0xf11b # li $t0 24
+0xf018 # li $t1 27
+0x2105 # bed $t1 $t0 5
+0x5102 # ble $t1 $t0 2
+0x9110 # sub $t1 $t1 $t0
+0x1001 # b (1)
+0x9001 # sub $t0 $t0 $t1
+0x100a # b -6
+0x0000 # halt
+	\end{lstlisting}
+	\caption{
+		\label{pgcd_hexa}
+		Code hexadécimal du programme MIPS \textit{pgcd} compilé
+	}
+\end{figure}
+
+\paragraph{}{
+	Ce programme nous donne bien le résultat attendu dans les registres : $3$.
+}
+
+\paragraph{NTZ}{
+	Pour aller plus loin nous codons un second programme. Nous avons choisi
+	d'implémenter la fonction \textit{ntz} présente sur l'examen de 2012/2013 de cette
+	même matière. \newline
+	À la figure \ref{ntz_c} on a le code c de la fonction, à la figure \ref{ntz_asm}
+	son code MIPS et à la figure \ref{ntz_asm} le code hexadécimal du programme
+}
+
+\begin{figure}
+	\lstset{
+		frame=single,
+		numbers=left,
+		numbersep=5pt,
+		language=C++
+	}
+	\begin{lstlisting}
+int ntz( unsigned int x )
+{
+	int n = 0;
+	x = ~x & (x-1);
+	while (x != 0)
+	{
+		n = n + 1;
+		x = x >> 1;
+	}
+	return n;
+}
+	\end{lstlisting}
+	\caption{
+		\label{ntz_c}
+		Code C de la fonction \textit{ntz} tiré du sujet de l’examen de 2012-2013
+	}
+\end{figure}
+
+\begin{figure}
+	\lstset{
+		frame=single,
+		numbers=left,
+		numbersep=5pt,
+		language=[mips]Assembler,
+		morekeywords={halt,shr}
+	}
+	\begin{lstlisting}
+	.data
+	.text
+	.globl __start
+	
+__start:
+# initialisation des variables
+	li $t0 32		# x = 32
+	li $t1 0		# n = 0
+	li $t3 1		# pour -1
+	li $t4 0		# pour zero
+		
+	sub $t2 $t0 $t3		# x - 1
+	not $t0 $t0		# not x
+	and $t0 $t0 $t2		# and(x-1)
+	
+while:
+	beq $t0, $t4, end_while	
+	add $t1, $t1, $t3	# n = n + 1
+	shr $t0, $t0, 1		# x = x >> 1
+	b while			
+end_while:
+	# fin du programme
+	halt
+	\end{lstlisting}
+	\caption{
+		\label{ntz_asm}
+		Code MIPS de la fonction \textit{ntz}
+	}
+\end{figure}
+
+\begin{figure}
+	\lstset{
+		basicstyle=\ttfamily,
+		frame=single,
+		numbers=left,
+		numbersep=5pt,
+		language=[mips]Assembler
+	}
+	\begin{lstlisting}
+0xf020 # li $t2 32
+0xf100 # li $t1 0
+0xf301 # li $t3 1
+0xf400 # $li $t4 0
+0x9203 # sub $t2 $t0 $t3
+0xc000 # not $t0 $t0
+0xb002 # and $t0 $t0 $t2
+0x2043 # beq $t0 $t4 3
+0x8113 # add $t1 $t1 $t3
+0xe003 # shr $t0 $t0 1
+0x100c # b -4
+0x0000 # halt
+	\end{lstlisting}
+	\caption{
+		\label{ntz_hexa}
+		Code hexadécimal de la fonction \textit{pgcd} tiré du sujet
+	}
+\end{figure}
+
+\paragraph{}{
+	Le programme \textit{ntz} stock son résultat dans le second registre.
+}
+
+\paragraph{HALT!}{
+	D'après le schéma général du Nono-1, l'instruction \textit{halt} donne l'adresse
+	de la dernière instruction dans la mémoire. Le problème est que le processeur ne 
+	s’arrête pas lorsqu'il a atteint cette instruction, mais va boucler sur cette 
+	instruction. Ainsi, si cette dernière est utilisée, elle va être exécutée indéfiniment. 
+}
