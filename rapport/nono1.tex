@@ -31,7 +31,7 @@ while (i != j)
 	\end{lstlisting}
 	\caption{
 		\label{pgcd_c}
-		Code C du programme \textit{pgcd} tiré du sujet
+		Code C de la fonction \textit{pgcd} tirée du sujet
 	}
 \end{figure}
 
@@ -88,14 +88,14 @@ halt
 0x2105 # bed $t1 $t0 5
 0x5102 # ble $t1 $t0 2
 0x9110 # sub $t1 $t1 $t0
-0x1001 # b (1)
+0x1001 # b 1
 0x9001 # sub $t0 $t0 $t1
 0x100a # b -6
 0x0000 # halt
 	\end{lstlisting}
 	\caption{
 		\label{pgcd_hexa}
-		Code hexadécimal du programme MIPS \textit{pgcd} compilé
+		Code hexadécimal du programme \textit{pgcd} compilé pour \textsc{Nono 1}
 	}
 \end{figure}
 
@@ -104,10 +104,10 @@ halt
 }
 
 \paragraph{NTZ}{
-	Pour aller plus loin nous codons un second programme. Nous avons choisi
+	Pour aller plus loin nous avons codé un second programme. Nous avons choisi
 	d'implémenter la fonction \textit{ntz} présente sur l'examen de 2012/2013 de cette
 	même matière. \newline
-	À la figure \ref{ntz_c} on a le code c de la fonction, à la figure \ref{ntz_asm}
+	À la figure \ref{ntz_c} on a le code C de la fonction, à la figure \ref{ntz_asm}
 	son code MIPS et à la figure \ref{ntz_asm} le code hexadécimal du programme
 }
 
@@ -133,7 +133,7 @@ int ntz( unsigned int x )
 	\end{lstlisting}
 	\caption{
 		\label{ntz_c}
-		Code C de la fonction \textit{ntz} tiré du sujet de l’examen de 2012-2013
+		Code C de la fonction \textit{ntz} tirée du sujet de l’examen de 2012-2013
 	}
 \end{figure}
 
@@ -188,7 +188,7 @@ end_while:
 0xf020 # li $t2 32
 0xf100 # li $t1 0
 0xf301 # li $t3 1
-0xf400 # $li $t4 0
+0xf400 # li $t4 0
 0x9203 # sub $t2 $t0 $t3
 0xc000 # not $t0 $t0
 0xb002 # and $t0 $t0 $t2
@@ -200,7 +200,7 @@ end_while:
 	\end{lstlisting}
 	\caption{
 		\label{ntz_hexa}
-		Code hexadécimal de la fonction \textit{pgcd} tiré du sujet
+		Code hexadécimal de la fonction \textit{ntz}
 	}
 \end{figure}
 
@@ -209,8 +209,8 @@ end_while:
 }
 
 \paragraph{HALT!}{
-	D'après le schéma général du Nono-1, l'instruction \textit{halt} donne l'adresse
-	de la dernière instruction dans la mémoire. Le problème est que le processeur ne 
-	s’arrête pas lorsqu'il a atteint cette instruction, mais va boucler sur cette 
-	instruction. Ainsi, si cette dernière est utilisée, elle va être exécutée indéfiniment. 
+	D'après le fonctionnement général de \textsc{Nono 1}, l’instruction \textit{halt} donne l'adresse
+	mémoire de la dernière instruction. Le problème est que le processeur ne 
+	s’arrête pas lorsqu'il a atteint cette instruction. et il va boucler sur cette 
+	instruction. Ainsi, si cette dernière est utilisée, elle va être exécutée à l'infini. 
 }
